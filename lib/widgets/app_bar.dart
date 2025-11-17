@@ -16,7 +16,7 @@ class ReusableAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.leadingIcon = Icons.home_outlined,
   }) : super(key: key);
 
-  @override
+  @override 
   Widget build(BuildContext context) {
     return AppBar(
       leading: IconButton(
