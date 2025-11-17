@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:jurnalku_app/screens/login.dart';
 // Splash Screen Utama
 class SplashScreen extends StatefulWidget {
@@ -18,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
       // pushReplacement mencegah pengguna kembali ke splash screen dengan tombol kembali
       if (mounted) {
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const Login()),
+          MaterialPageRoute(builder: (context) => const LoginScreen()),
         );
       }
     });
@@ -26,15 +27,29 @@ class _SplashScreenState extends State<SplashScreen> {
  
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Color(0xFF0EB34C),
+    return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: SizedBox(
           width: 230,
           height: 230,
-          child: Image(
-            image: AssetImage('assets/logo/furlo.png'),
-            fit: BoxFit.contain,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image(
+                image: AssetImage('assets/icons/book.png'),
+                width: 30,
+              ),
+              SizedBox(width: 10),
+              Text(
+                'Jurnalku',
+                style: GoogleFonts.inter(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+            ],
           ),
         ),
       ),
