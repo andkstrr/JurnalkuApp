@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class FormTextField extends StatelessWidget {
-  const FormTextField({super.key, required this.text, required this.placeHolderText});
+  const FormTextField({super.key, required this.text, required this.hintText});
 
   final String text;
   final String hintText;
@@ -30,7 +30,7 @@ class FormTextField extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: Text(
-            placeHolderText,
+            hintText,
             style: GoogleFonts.inter(
               fontSize: 16,
               fontWeight: FontWeight.w500,
