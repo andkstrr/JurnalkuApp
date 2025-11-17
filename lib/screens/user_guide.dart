@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jurnalku_app/widgets/app_bar.dart';
+import 'package:jurnalku_app/widgets/user_guide_card.dart';
 
 class UserGuide extends StatelessWidget {
   const UserGuide({super.key});
@@ -7,21 +9,16 @@ class UserGuide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
-      appBar: AppBar(
-        title: Text("Rizqya Adzra Zahira Sudrajat"),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.history),
-            tooltip: 'Open shopping cart',
-            onPressed: () {}
-          ),
-        ],
+      backgroundColor: Colors.white,
+      appBar: ReusableAppBar(
+        userName: "Rizqya Adzra Zahira Sudrajat", 
+        userRombel: "PPLG XII-5", 
+        onLeadingPressed: () {}, 
+        leadingIcon: Icons.home_outlined
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(23),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -31,7 +28,7 @@ class UserGuide extends StatelessWidget {
                     color: Colors.blue[900], 
                     size: 34,
                   ),
-                  SizedBox(width: 6),
+                  SizedBox(width: 10),
                   Text("Panduan Penggunaan", style: GoogleFonts.inter(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -50,41 +47,27 @@ class UserGuide extends StatelessWidget {
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
               ) ),
-              Divider(height: 15),
+              Divider(height: 15, color: Colors.grey[200]),
               SizedBox(height: 10),
-              Container(
-                width: double.infinity,
-                height: 85,
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.white,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(Icons.task, color: Colors.blue[900], size:30,),
-                    SizedBox(width: 10),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Unggah Profile", style: GoogleFonts.inter(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold
-                          ),
-                        ),
-                        Text("Panduan untuk mengubah profil pengguna", style: GoogleFonts.inter(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.grey[700]
-                          ),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              )
+              UserGuideCard(icon: Icons.task, title: "Unggah Profile", subtitle: "Panduan untuk mengubah profil pengguna"),
+              SizedBox(height: 10),
+              UserGuideCard(icon: Icons.task, title: "Ganti Password", subtitle: "Panduan untuk mengganti password pengguna"),
+              SizedBox(height: 30),
+              Text("Untuk Siswa",  style: GoogleFonts.inter(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+              ) ),
+              Divider(height: 15, color: Colors.grey[200]),
+              SizedBox(height: 10),
+              UserGuideCard(icon: Icons.task, title: "Mengisi Jurnal", subtitle: "Panduan untuk mengisi kegiatan sehari-hari"),
+              SizedBox(height: 10),
+              UserGuideCard(icon: Icons.task, title: "Kelengkapan Profile", subtitle: "Panduan untuk melengkapi profile"),
+              SizedBox(height: 10),
+              UserGuideCard(icon: Icons.image, title: "Mengelola Portofolio", subtitle: "Panduan untuk menambah, edit, dan hapus portofolio"),
+              SizedBox(height: 10),
+              UserGuideCard(icon: Icons.check, title: "Mengelola Sertifikat", subtitle: "Panduan untuk menambah, edit, dan hapus sertifikat"),
+              SizedBox(height: 10),
+              UserGuideCard(icon: Icons.info, title: "Catatan Sikap Saya", subtitle: "Panduan untuk melihat dan memahami catatan sikap"),
             ],            
           ),),
       ),
