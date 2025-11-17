@@ -16,28 +16,41 @@ class FormTextField extends StatelessWidget {
         Text(
           text,
           style: GoogleFonts.inter(
-            fontSize: 15,
+            fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
         ),
         const SizedBox(height: 5),
-        Container(
-          width: double.infinity,
-          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-          decoration: BoxDecoration(
-            color: Colors.grey[100],
-            border: Border.all(color: Colors.grey[300]!),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Text(
-            hintText,
-            style: GoogleFonts.inter(
-              fontSize: 16,
+        TextField(
+          decoration: InputDecoration(
+            hintText: hintText,
+            hintStyle: GoogleFonts.inter(
+              fontSize: 17,
               fontWeight: FontWeight.w500,
-              color: Colors.black,
+              color: Colors.grey[500],
+            ),
+            filled: true,
+            fillColor: Colors.grey[100],
+            border: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+              borderSide: BorderSide(
+                width: 2.5
+              )
+            ), 
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.blue[800]!,
+                width: 3
+              ),
+              borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+            ),
+            suffixIcon: IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.remove_red_eye),
+              color: Colors.grey[600],
             ),
           ),
-        )
+        ),
       ],
     );
   }

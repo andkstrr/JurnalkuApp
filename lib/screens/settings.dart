@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jurnalku_app/widgets/app_bar.dart';
 import 'package:jurnalku_app/widgets/form_show_field.dart';
+import 'package:jurnalku_app/widgets/form_text_field.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -17,6 +18,7 @@ class SettingsScreen extends StatelessWidget {
         leadingIcon: Icons.home_outlined,
       ),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
           child: Column(
@@ -136,6 +138,43 @@ class SettingsScreen extends StatelessWidget {
                       )
                     ),
                     const SizedBox(height: 30),
+                    FormTextField(
+                      text: "Kata Sandi Lama",
+                      hintText: "Masukkan password",
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      "Masukkan kata sandi lama Anda",
+                      style: GoogleFonts.inter(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    FormTextField(
+                      text: "Kata Sandi Baru",
+                      hintText: "Masukkan password",
+                    ),
+                    const SizedBox(height: 50),
+                    ElevatedButton(
+                      onPressed: () {}, 
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue[900],
+                        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(7),
+                        ),
+                      ),
+                      child: Text(
+                        "Simpan Perubahan",
+                        style: GoogleFonts.inter(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
+                      )
+                    )
                   ]
                 ),
               ),

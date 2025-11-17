@@ -15,7 +15,7 @@ class FormShowField extends StatelessWidget {
         Text(
           text,
           style: GoogleFonts.inter(
-            fontSize: 15,
+            fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -31,7 +31,7 @@ class FormShowField extends StatelessWidget {
           child: Text(
             placeHolderText,
             style: GoogleFonts.inter(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.w500,
               color: Colors.black,
             ),

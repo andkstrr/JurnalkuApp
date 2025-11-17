@@ -19,6 +19,8 @@ class ReusableAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override  
   Widget build(BuildContext context) {
     return AppBar(
+      scrolledUnderElevation: 0.0, // Nonaktifkan efek warna saat di-scroll
+      surfaceTintColor: Colors.transparent, // Nonaktifkan tint Material 3
       leading: IconButton(
         icon: Icon(
           leadingIcon,
