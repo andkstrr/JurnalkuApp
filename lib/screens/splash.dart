@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jurnalku_app/screens/login.dart';
-import 'package:jurnalku_app/screens/user_guide.dart';
 // Splash Screen Utama
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -20,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
       // pushReplacement mencegah pengguna kembali ke splash screen dengan tombol kembali
       if (mounted) {
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const UserGuide()),
+          MaterialPageRoute(builder: (context) => const LoginScreen()),
         );
       }
     });
