@@ -46,7 +46,7 @@ class CompetencyStatisticCard extends StatelessWidget {
               Text(
                 title,
                 style: GoogleFonts.inter(
-                  fontSize: 15,
+                  fontSize: 14,
                   fontWeight: FontWeight.w600,
                   color: Colors.grey[700],
                 ),
@@ -64,7 +64,7 @@ class CompetencyStatisticCard extends StatelessWidget {
               Text(
                 "● $status",
                 style: GoogleFonts.inter(
-                  fontSize: 15,
+                  fontSize: 13,
                   fontWeight: FontWeight.w600,
                   color: Color(int.parse(color)),
                 ),
