@@ -29,7 +29,7 @@ class AcademicProgress extends StatelessWidget {
             Text(
               status,
               style: GoogleFonts.inter(
-                fontSize: 15,
+                fontSize: 14,
                 color: Colors.black,
                 fontWeight: FontWeight.w500
               ),
