@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jurnalku_app/screens/dashboard.dart';
+import 'package:jurnalku_app/screens/explore.dart';
 import 'package:jurnalku_app/screens/login.dart';
 import 'package:jurnalku_app/screens/settings.dart';
 import 'package:jurnalku_app/screens/user_guide.dart';
@@ -22,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
       // pushReplacement mencegah pengguna kembali ke splash screen dengan tombol kembali
       if (mounted) {
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const DashboardScreen()),
+          MaterialPageRoute(builder: (context) => const ExploreScreen()),
         );
       }
     });
