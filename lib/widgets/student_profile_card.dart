@@ -22,7 +22,7 @@ class StudentProfileCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(17),
+      padding: EdgeInsets.symmetric(horizontal: 17, vertical: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -64,11 +64,11 @@ class StudentProfileCard extends StatelessWidget {
               color: Colors.grey[700]
             ),
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 10),
           Divider(
             color: Colors.grey[300],
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 10),
           Row(
             children: [
               Row(
@@ -107,8 +107,38 @@ class StudentProfileCard extends StatelessWidget {
                     ),
                   )
                 ],
-              )
+              ),
             ],
+          ),
+          const SizedBox(height: 10),
+          ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue[900],
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8)
+              ),
+              minimumSize: Size(20, 5),
+            ),
+            child: Row(
+              children: [
+                Text(
+                  "Lihat Detail",
+                  style: GoogleFonts.inter(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white
+                  ),
+                ),
+                const Spacer(),
+                Icon(
+                  Icons.arrow_circle_right,
+                  color: Colors.white,
+                  size: 20,
+                )
+              ],
+            )
           )
         ],
       ),
