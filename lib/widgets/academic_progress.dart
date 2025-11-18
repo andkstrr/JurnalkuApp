@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jurnalku_app/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AcademicProgress extends StatelessWidget {
