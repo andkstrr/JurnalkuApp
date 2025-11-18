@@ -45,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   children: [
                     const Image(
                       image: AssetImage('assets/icons/book.png'),
-                      width: 40,
+                      width: 60,
                     ),
                     const SizedBox(width: 5),
                     Column(
