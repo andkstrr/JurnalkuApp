@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jurnalku_app/screens/dashboard.dart';
 import 'package:jurnalku_app/screens/login.dart';
 import 'package:jurnalku_app/screens/settings.dart';
 import 'package:jurnalku_app/screens/user_guide.dart';
@@ -21,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
       // pushReplacement mencegah pengguna kembali ke splash screen dengan tombol kembali
       if (mounted) {
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const SettingsScreen()),
+          MaterialPageRoute(builder: (context) => const DashboardScreen()),
         );
       }
     });
@@ -44,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
               SizedBox(width: 10),
               Text(
-                'Jurnalku',
+                'Jurnalku.',
                 style: GoogleFonts.inter(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,

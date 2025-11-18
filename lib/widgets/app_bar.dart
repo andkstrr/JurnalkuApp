@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart'; 
+import 'package:google_fonts/google_fonts.dart';
 
 class ReusableAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String userName;
@@ -16,18 +16,14 @@ class ReusableAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.leadingIcon = Icons.home_outlined,
   }) : super(key: key);
 
-  @override  
+  @override
   Widget build(BuildContext context) {
     return AppBar(
       scrolledUnderElevation: 0.0, // Nonaktifkan efek warna saat di-scroll
       surfaceTintColor: Colors.transparent, // Nonaktifkan tint Material 3
       leading: IconButton(
-        icon: Icon(
-          leadingIcon,
-          color: Colors.grey[600],
-          size: 30,
-        ),
-        onPressed: onLeadingPressed, 
+        icon: Icon(leadingIcon, color: Colors.grey[600], size: 26),
+        onPressed: onLeadingPressed,
       ),
       actions: [
         Padding(
@@ -39,7 +35,7 @@ class ReusableAppBar extends StatelessWidget implements PreferredSizeWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    userName, 
+                    userName,
                     style: GoogleFonts.inter(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
@@ -47,37 +43,31 @@ class ReusableAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ),
                   ),
                   Text(
-                    userRombel, 
+                    userRombel,
                     style: GoogleFonts.inter(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
                       color: Colors.grey[600],
                     ),
-                  )
+                  ),
                 ],
               ),
               const SizedBox(width: 20),
-              CircleAvatar(
-                radius: 20,
-                backgroundColor: Colors.grey[300],
-                child: Icon(
-                  Icons.person,
-                  size: 30,
-                  color: Colors.grey[700],
+              GestureDetector(
+                onTap: () {},
+                child: CircleAvatar(
+                  radius: 20,
+                  backgroundColor: Colors.grey[300],
+                  child: Icon(Icons.person, size: 30, color: Colors.grey[700]),
                 ),
-              )
+              ),
             ],
           ),
         ),
       ],
       // Properti tampilan AppBar
       toolbarHeight: 70,
-      shape: Border(
-        bottom: BorderSide(
-          color: Colors.grey[300]!,
-          width: 2,
-        ),
-      ),
+      shape: Border(bottom: BorderSide(color: Colors.grey[300]!, width: 2)),
       backgroundColor: Colors.white,
     );
   }

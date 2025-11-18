@@ -12,7 +12,7 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: ReusableAppBar(
-        userName: "Budi Santoso", 
+        userName: "Andika Satrio Nurcahyo", 
         userRombel: "PPLG XII-5", 
         onLeadingPressed: () {},
         leadingIcon: Icons.home_outlined,
