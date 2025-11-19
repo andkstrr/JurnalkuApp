@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:jurnalku_app/screens/dashboard.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -38,12 +39,12 @@ class LoginScreen extends StatelessWidget {
                     Row(
                       children: [
                         Text('Masuk Untuk Memulai',
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.inter(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold
                             )), SizedBox(width: 5),
                         Text('Jurnalku',
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.inter(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.indigo
@@ -56,7 +57,7 @@ class LoginScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('Username atau NIS',
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.inter(
                               fontSize: 14,
                             )),
                         SizedBox(height: 5),
@@ -70,7 +71,7 @@ class LoginScreen extends StatelessWidget {
                             )
                         ), SizedBox(height: 15),
                         Text('Password',
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.inter(
                               fontSize: 14,
                             )),
                         SizedBox(height: 5),
@@ -85,7 +86,12 @@ class LoginScreen extends StatelessWidget {
                             )
                         ), SizedBox(height: 25),
 
-                        ElevatedButton(onPressed: () {},
+                        ElevatedButton(onPressed: () {
+                          Navigator.push(
+                              context,
+                                MaterialPageRoute(builder: (context) => DashboardScreen()
+                                ));
+                        },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.indigo,
                               minimumSize: Size(double.infinity, 50),
@@ -94,7 +100,7 @@ class LoginScreen extends StatelessWidget {
                               ),
                             ),
                             child: Text('Masuk',
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.inter(
                                     fontSize: 16,
                                     color: Colors.white
                                 ))
@@ -103,7 +109,7 @@ class LoginScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("Lupa password? Hubungi guru laboran.",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.inter(
                                   fontSize: 14,
                                 )),
                           ],
@@ -122,13 +128,13 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     Text("Menyatukan Upaya untuk Kemajuan Siswa",
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.inter(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         )), SizedBox(height: 15),
                     Text("Jurnalku adalah aplikasi cerdas yang membantu guru dan siswa dalam memantau dan mengelola kompetensi keahlian siswa secara efektif.",
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.inter(
                             fontSize: 14,
                             color: Colors.grey[700]
                         ))
@@ -198,7 +204,7 @@ class LoginScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text("© GEN-28 PPLG SMK Wikrama Bogor. All Rights Reserved.",
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.inter(
                               fontSize: 16,
                               color: Colors.white
                           ))
@@ -254,13 +260,13 @@ class FeatureCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(title,
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.inter(
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
                       )),
                   SizedBox(height: 5),
                   Text(subtitle,
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.inter(
                         fontSize: 14,
                         color: Colors.grey[700],
                         height: 1.5,
