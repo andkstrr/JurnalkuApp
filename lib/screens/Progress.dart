@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jurnalku_app/widgets/competency_statistic_card.dart';
 import 'package:jurnalku_app/widgets/header_section.dart';
 import 'package:jurnalku_app/widgets/app_bar.dart';
+import 'package:jurnalku_app/widgets/table.dart';
 
 class ProgressScreen extends StatelessWidget {
   const ProgressScreen({super.key});

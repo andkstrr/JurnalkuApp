@@ -6,7 +6,7 @@ class CompetencyStatisticCard extends StatelessWidget {
     super.key,
     required this.title,
     required this.value,
-    required this.status,
+    this.status,
     required this.color,
     required this.valueColor,
     required this.icon,
@@ -14,7 +14,7 @@ class CompetencyStatisticCard extends StatelessWidget {
 
   final String title;
   final int value;
-  final String status;
+  final String? status;
   final String color;
   final String valueColor;
   final IconData icon;
@@ -61,6 +61,7 @@ class CompetencyStatisticCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
+              if (status != null && status!.isNotEmpty)
               Text(
                 "● $status",
                 style: GoogleFonts.inter(
