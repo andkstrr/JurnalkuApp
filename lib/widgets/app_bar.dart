@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:jurnalku_app/screens/attitude_record.dart';
 import 'package:jurnalku_app/screens/dashboard.dart';
 import 'package:jurnalku_app/screens/journal_page.dart';
+import 'package:jurnalku_app/screens/progress.dart';
 import 'package:jurnalku_app/screens/settings.dart';
 import 'package:jurnalku_app/screens/user_guide.dart';
 import 'package:jurnalku_app/screens/witness_demand.dart';
@@ -80,6 +81,10 @@ class ReusableAppBar extends StatelessWidget implements PreferredSizeWidget {
                 MaterialPageRoute(builder: (context) => const WitnessDemand()),
               );
             } else if (value == MenuItem.progress) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProgressScreen()),
+              );
             } else if (value == MenuItem.attitudeRecord) {
               Navigator.push(
                 context,

@@ -28,11 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
       // pushReplacement mencegah pengguna kembali ke splash screen dengan tombol kembali
       if (mounted) {
         Navigator.of(context).pushReplacement(
-<<<<<<<<< Temporary merge branch 1
-          MaterialPageRoute(builder: (context) => const LoginScreen()),
-=========
-          MaterialPageRoute(builder: (context) => const AtitudeRecord()),
->>>>>>>>> Temporary merge branch 2
+          MaterialPageRoute(builder: (context) => const ExploreScreen()),
         );
       }
     });

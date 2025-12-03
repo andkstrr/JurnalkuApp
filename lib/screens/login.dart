@@ -91,7 +91,12 @@ class LoginScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 25),
 
-                        ElevatedButton(onPressed: () {},
+                        ElevatedButton(onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => DashboardScreen()),
+                          );
+                        },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.indigo,
                               minimumSize: Size(double.infinity, 50),

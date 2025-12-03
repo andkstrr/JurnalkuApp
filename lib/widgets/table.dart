@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class RecordTable extends StatelessWidget {
   const RecordTable({super.key, this.items = const []});
