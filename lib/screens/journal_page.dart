@@ -140,7 +140,7 @@ class JournalPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 15),
-              PoinTable()
+              // PoinTable()
             ],
           ),
         ),

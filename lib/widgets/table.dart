@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class RecordTable extends StatelessWidget {
   const RecordTable({super.key, this.items = const []});
@@ -352,66 +353,85 @@ class _ClickableHeader extends StatelessWidget {
   }
   }
 
+class ProgressTable extends StatelessWidget {
+  final String title;
+  final List<TableRow> rows;
 
-class PoinTable extends StatelessWidget {
-  const PoinTable({super.key});
+  const ProgressTable({
+    super.key,
+    required this.title,
+    required this.rows,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.shade400),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          width: 0.5,
+          color: Colors.grey,
+        ),
+        gradient: LinearGradient(
+          colors: [Colors.grey.shade100, Colors.grey.shade200],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildHeader(),
-          _buildRow(
-            "(5) mengerjakan project/adanya update progress belajar",
-            ["0", "0", "0", "0"],
-            bold: false,
-          ),
-          _buildRow(
-            "(1 - 5) poin dari pertanyaan atau laporan pengetahuan materi",
-            ["0", "0", "0", "0"],
-            bold: false,
-          ),
-          _buildRow("Jumlah poin minggu ini", ["0", "0", "0", "0"]),
-          _buildRow("Jumlah poin ceklist pembiasaan", ["0", "", "", ""], single: true),
-          _buildRow("Jumlah keseluruhan poin", ["0", "", "", ""], single: true),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildHeader() {
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color(0xFFE5ECF5),
-        border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
-      ),
-      child: Row(
-        children: [
-          _headerCell("Kategori Poin", width: 220),
-          Expanded(
+          Padding(
+            padding: const EdgeInsets.all(20),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  decoration: BoxDecoration(
-                    border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
-                  ),
-                  child: const Text(
-                    "Jumlah Poin",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
                   ),
                 ),
-                Row(
+                const SizedBox(height: 5),
+                Text(
+                  "Kompetensi dan materi pembelajaran",
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.grey[600],
+                  ),
+                )
+              ],
+            ),
+          ),
+          Divider(
+            height: 1,
+            color: Colors.grey[300],
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Table(
+              columnWidths: const {
+                0: FlexColumnWidth(2),
+                1: FlexColumnWidth(1),
+                2: FlexColumnWidth(1),
+                3: FlexColumnWidth(1),
+                4: FlexColumnWidth(2),
+              },
+              border: TableBorder(
+                horizontalInside: BorderSide(color: Colors.grey.shade300),
+              ),
+              children: [
+                const TableRow(
+                  decoration: BoxDecoration(color: Colors.transparent),
                   children: [
-                    _headerCell("M1"),
-                    _headerCell("M2"),
-                    _headerCell("M3"),
-                    _headerCell("M4"),
+                    _HeaderCell("KOMPETENSI"),
+                    _HeaderCell("GURU"),
+                    _HeaderCell("TANGGAL"),
+                    _HeaderCell("STATUS"),
+                    _HeaderCell("CATATAN"),
                   ],
                 ),
               ],
@@ -421,58 +441,22 @@ class PoinTable extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _buildRow(
-    String title,
-    List<String> values, {
-    bool bold = true,
-    bool single = false,
-  }) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
-      ),
-      child: Row(
-        children: [
-          _cell(
-            title,
-            width: 232,
-            bold: bold,
-          ),
-          single
-              ? _cell(values[0])
-              : Row(
-                  children: values.map((v) => _cell(v, width: 55)).toList(),
-                )
-        ],
-      ),
-    );
-  }
+class _HeaderCell extends StatelessWidget {
+  final String text;
+  const _HeaderCell(this.text);
 
-  Widget _headerCell(String text, {double width = 55}) {
-    return Container(
-      width: width,
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      alignment: Alignment.center,
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0, top: 10.0),
       child: Text(
         text,
+        textAlign: TextAlign.center,
         style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 13,
-        ),
-      ),
-    );
-  }
-
-  Widget _cell(String text, {double width = 55, bool bold = false}) {
-    return Container(
-      width: width,
-      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 6),
-      child: Text(
-        text,
-        style: TextStyle(
-          fontWeight: bold ? FontWeight.bold : FontWeight.normal,
-          fontSize: 13,
+            fontWeight: FontWeight.bold,
+            fontSize: 11
         ),
       ),
     );
