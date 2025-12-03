@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jurnalku_app/screens/dashboard.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:jurnalku_app/screens/dashboard.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
