@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jurnalku_app/screens/Progress.dart';
 import 'package:jurnalku_app/screens/attitude_record.dart';
 import 'package:jurnalku_app/screens/dashboard.dart';
 import 'package:jurnalku_app/screens/journal_page.dart';
@@ -27,7 +28,11 @@ class _SplashScreenState extends State<SplashScreen> {
       // pushReplacement mencegah pengguna kembali ke splash screen dengan tombol kembali
       if (mounted) {
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const ExploreScreen()),
+<<<<<<<<< Temporary merge branch 1
+          MaterialPageRoute(builder: (context) => const LoginScreen()),
+=========
+          MaterialPageRoute(builder: (context) => const AtitudeRecord()),
+>>>>>>>>> Temporary merge branch 2
         );
       }
     });
