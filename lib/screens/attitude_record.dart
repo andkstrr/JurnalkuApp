@@ -4,8 +4,32 @@ import 'package:jurnalku_app/widgets/app_bar.dart';
 import 'package:jurnalku_app/widgets/competency_statistic_card.dart';
 import 'package:jurnalku_app/widgets/table.dart';
 
-class AtitudeRecord extends StatelessWidget {
+class AtitudeRecord extends StatefulWidget {
   const AtitudeRecord({super.key});
+
+  @override
+  State<AtitudeRecord> createState() => _AtitudeRecordState();
+}
+
+class _AtitudeRecordState extends State<AtitudeRecord> {
+  final List<Map<String, dynamic>> recordData = [
+    {
+      "kategori": "Kedisiplinan",
+      "catatan": "Sering terlambat 10 menit, setelah bel masuk",
+      "status": "Diproses",
+      "tanggal_1": "10 Jan 2025",
+      "tanggal_2": "12 Jan 2025",
+      "aksi": "Lihat",
+    },
+    {
+      "kategori": "Sikap",
+      "catatan": "Kurang mem-perhatian pada saat jam pelajaran",
+      "status": "Selesai",
+      "tanggal_1": "5 Jan 2025",
+      "tanggal_2": "7 Jan 2025",
+      "aksi": "Lihat",
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -95,8 +119,7 @@ class AtitudeRecord extends StatelessWidget {
                 icon: Icons.check_circle_outline,
               ),
               SizedBox(height: 25),
-              RecordTable(
-              )
+              RecordList(items: recordData)
             ],
           ),
         ),
