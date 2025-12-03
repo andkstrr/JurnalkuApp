@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class RecordTable extends StatelessWidget {
   const RecordTable({super.key, this.items = const []});
@@ -351,13 +352,113 @@ class _ClickableHeader extends StatelessWidget {
     );
   }
   }
-  
-  class ProgressTable extends StatelessWidget {
-    const ProgressTable({super.key});
-  
-    @override
-    Widget build(BuildContext context) {
-      return const Placeholder();
-    }
+
+class ProgressTable extends StatelessWidget {
+  final String title;
+  final List<TableRow> rows;
+
+  const ProgressTable({
+    super.key,
+    required this.title,
+    required this.rows,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          width: 0.5,
+          color: Colors.grey,
+        ),
+        gradient: LinearGradient(
+          colors: [Colors.grey.shade100, Colors.grey.shade200],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  "Kompetensi dan materi pembelajaran",
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.grey[600],
+                  ),
+                )
+              ],
+            ),
+          ),
+          Divider(
+            height: 1,
+            color: Colors.grey[300],
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Table(
+              columnWidths: const {
+                0: FlexColumnWidth(2),
+                1: FlexColumnWidth(1),
+                2: FlexColumnWidth(1),
+                3: FlexColumnWidth(1),
+                4: FlexColumnWidth(2),
+              },
+              border: TableBorder(
+                horizontalInside: BorderSide(color: Colors.grey.shade300),
+              ),
+              children: [
+                const TableRow(
+                  decoration: BoxDecoration(color: Colors.transparent),
+                  children: [
+                    _HeaderCell("KOMPETENSI"),
+                    _HeaderCell("GURU"),
+                    _HeaderCell("TANGGAL"),
+                    _HeaderCell("STATUS"),
+                    _HeaderCell("CATATAN"),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
+}
+
+class _HeaderCell extends StatelessWidget {
+  final String text;
+  const _HeaderCell(this.text);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0, top: 10.0),
+      child: Text(
+        text,
+        style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 11
+        ),
+      ),
+    );
+  }
+}
   

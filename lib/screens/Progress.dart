@@ -3,6 +3,7 @@ import 'package:jurnalku_app/widgets/competency_statistic_card.dart';
 import 'package:jurnalku_app/widgets/header_section.dart';
 import 'package:jurnalku_app/widgets/app_bar.dart';
 import 'package:jurnalku_app/widgets/table.dart';
+import 'package:jurnalku_app/widgets/table.dart';
 
 class ProgressScreen extends StatelessWidget {
   const ProgressScreen({super.key});
@@ -61,7 +62,9 @@ class ProgressScreen extends StatelessWidget {
                 color: "0xFFa855f7",
                 valueColor: "0xFF000000",
                 icon: Icons.lightbulb_outline,
-              ),
+              ), SizedBox(height: 30),
+
+              ProgressTable(title: "Test", rows: [])
             ]
           ),
         ),
