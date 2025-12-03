@@ -351,3 +351,130 @@ class _ClickableHeader extends StatelessWidget {
     );
   }
   }
+
+
+class PoinTable extends StatelessWidget {
+  const PoinTable({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey.shade400),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        children: [
+          _buildHeader(),
+          _buildRow(
+            "(5) mengerjakan project/adanya update progress belajar",
+            ["0", "0", "0", "0"],
+            bold: false,
+          ),
+          _buildRow(
+            "(1 - 5) poin dari pertanyaan atau laporan pengetahuan materi",
+            ["0", "0", "0", "0"],
+            bold: false,
+          ),
+          _buildRow("Jumlah poin minggu ini", ["0", "0", "0", "0"]),
+          _buildRow("Jumlah poin ceklist pembiasaan", ["0", "", "", ""], single: true),
+          _buildRow("Jumlah keseluruhan poin", ["0", "", "", ""], single: true),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildHeader() {
+    return Container(
+      decoration: BoxDecoration(
+        color: const Color(0xFFE5ECF5),
+        border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
+      ),
+      child: Row(
+        children: [
+          _headerCell("Kategori Poin", width: 220),
+          Expanded(
+            child: Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  decoration: BoxDecoration(
+                    border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
+                  ),
+                  child: const Text(
+                    "Jumlah Poin",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Row(
+                  children: [
+                    _headerCell("M1"),
+                    _headerCell("M2"),
+                    _headerCell("M3"),
+                    _headerCell("M4"),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildRow(
+    String title,
+    List<String> values, {
+    bool bold = true,
+    bool single = false,
+  }) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
+      ),
+      child: Row(
+        children: [
+          _cell(
+            title,
+            width: 232,
+            bold: bold,
+          ),
+          single
+              ? _cell(values[0])
+              : Row(
+                  children: values.map((v) => _cell(v, width: 55)).toList(),
+                )
+        ],
+      ),
+    );
+  }
+
+  Widget _headerCell(String text, {double width = 55}) {
+    return Container(
+      width: width,
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      alignment: Alignment.center,
+      child: Text(
+        text,
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 13,
+        ),
+      ),
+    );
+  }
+
+  Widget _cell(String text, {double width = 55, bool bold = false}) {
+    return Container(
+      width: width,
+      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 6),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontWeight: bold ? FontWeight.bold : FontWeight.normal,
+          fontSize: 13,
+        ),
+      ),
+    );
+  }
+}

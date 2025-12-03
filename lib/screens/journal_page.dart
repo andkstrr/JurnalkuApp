@@ -93,6 +93,44 @@ class JournalPage extends StatelessWidget {
               ),
               SizedBox(height: 15),
               JobTable(),
+              SizedBox(height: 10),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text("●", style: TextStyle(fontSize: 18, color: Colors.green)),
+                  SizedBox(width: 5),
+                  Column(
+                    children: [
+                      Text("A: Approved", style: GoogleFonts.inter(
+                        color: Colors.grey[700]
+                        )
+                      ),
+                    ],
+                  ),
+                  SizedBox(width: 20),
+                  Text("●", style: TextStyle(fontSize: 18, color: Colors.orange)),
+                  SizedBox(width: 5),
+                  Column(
+                    children: [
+                      Text("P : Pending", style: GoogleFonts.inter(
+                        color: Colors.grey[700]
+                        )
+                      ),
+                    ],
+                  ),
+                  SizedBox(width: 20),
+                  Text("●", style: TextStyle(fontSize: 18, color: Colors.red)),
+                  SizedBox(width: 5),
+                  Column(
+                    children: [
+                      Text("R : Revisi", style: GoogleFonts.inter(
+                        color: Colors.grey[700]
+                        )
+                      ),
+                    ],
+                  ),
+                ],
+              ),
               SizedBox(height: 35),
               Text(
                 "D. Poin",
@@ -101,6 +139,8 @@ class JournalPage extends StatelessWidget {
                   fontWeight: FontWeight.w600
                 ),
               ),
+              SizedBox(height: 15),
+              PoinTable()
             ],
           ),
         ),
