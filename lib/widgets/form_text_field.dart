@@ -16,7 +16,7 @@ class FormTextField extends StatelessWidget {
         Text(
           text,
           style: GoogleFonts.inter(
-            fontSize: 16,
+            fontSize: 15,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -25,7 +25,7 @@ class FormTextField extends StatelessWidget {
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: GoogleFonts.inter(
-              fontSize: 17,
+              fontSize: 16,
               fontWeight: FontWeight.w500,
               color: Colors.grey[500],
             ),
@@ -34,8 +34,9 @@ class FormTextField extends StatelessWidget {
             border: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(8.0)),
               borderSide: BorderSide(
-                width: 2.5
-              )
+                width: 2.5,
+                color: Colors.grey
+              ),
             ), 
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(
@@ -48,6 +49,7 @@ class FormTextField extends StatelessWidget {
               onPressed: () {},
               icon: Icon(Icons.remove_red_eye),
               color: Colors.grey[600],
+              iconSize: 18,
             ),
           ),
         ),

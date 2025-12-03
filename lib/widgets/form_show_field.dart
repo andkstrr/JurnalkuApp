@@ -15,14 +15,14 @@ class FormShowField extends StatelessWidget {
         Text(
           text,
           style: GoogleFonts.inter(
-            fontSize: 16,
+            fontSize: 15,
             fontWeight: FontWeight.w600,
           ),
         ),
         const SizedBox(height: 5),
         Container(
           width: double.infinity,
-          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
           decoration: BoxDecoration(
             color: Colors.grey[100],
             border: Border.all(color: Colors.grey[300]!),
@@ -31,7 +31,7 @@ class FormShowField extends StatelessWidget {
           child: Text(
             placeHolderText,
             style: GoogleFonts.inter(
-              fontSize: 17,
+              fontSize: 16,
               fontWeight: FontWeight.w500,
               color: Colors.black,
             ),

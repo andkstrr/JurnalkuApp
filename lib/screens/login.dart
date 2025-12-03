@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jurnalku_app/screens/dashboard.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -16,10 +17,10 @@ class LoginScreen extends StatelessWidget {
               height: 270,
               width: double.infinity,
               decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/banner.jpg'),
-                    fit: BoxFit.cover,
-                  )
+                image: DecorationImage(
+                  image: AssetImage('assets/images/banner.jpg'),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
 
@@ -37,17 +38,22 @@ class LoginScreen extends StatelessWidget {
                   children: <Widget>[
                     Row(
                       children: [
-                        Text('Masuk Untuk Memulai',
-                            style: GoogleFonts.poppins(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold
-                            )), SizedBox(width: 5),
-                        Text('Jurnalku',
-                            style: GoogleFonts.poppins(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.indigo
-                            ))
+                        Text(
+                          'Masuk Untuk Memulai',
+                          style: GoogleFonts.inter(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(width: 5),
+                        Text(
+                          'Jurnalku',
+                          style: GoogleFonts.inter(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.indigo,
+                          ),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 20),
@@ -55,59 +61,78 @@ class LoginScreen extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Username atau NIS',
-                            style: GoogleFonts.poppins(
-                              fontSize: 14,
-                            )),
+                        Text(
+                          'Username atau NIS',
+                          style: GoogleFonts.inter(fontSize: 14),
+                        ),
                         SizedBox(height: 5),
                         TextField(
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                hintText: 'Masukkan username atau NIS',
-                                contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12)
-                            )
-                        ), SizedBox(height: 15),
-                        Text('Password',
-                            style: GoogleFonts.poppins(
-                              fontSize: 14,
-                            )),
-                        SizedBox(height: 5),
-                        TextField(
-                            obscureText: true,
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                hintText: 'Masukkan Password',
-                                contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12)
-                            )
-                        ), SizedBox(height: 25),
-
-                        ElevatedButton(onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.indigo,
-                              minimumSize: Size(double.infinity, 50),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
-                            child: Text('Masuk',
-                                style: GoogleFonts.poppins(
-                                    fontSize: 16,
-                                    color: Colors.white
-                                ))
-                        ), SizedBox(height: 40),
+                            hintText: 'Masukkan username atau NIS',
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 12,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 15),
+                        Text(
+                          'Password',
+                          style: GoogleFonts.inter(fontSize: 14),
+                        ),
+                        SizedBox(height: 5),
+                        TextField(
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            hintText: 'Masukkan Password',
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 12,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 25),
+
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const DashboardScreen(),
+                              ),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.indigo,
+                            minimumSize: Size(double.infinity, 50),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          child: Text(
+                            'Masuk',
+                            style: GoogleFonts.inter(
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 40),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Lupa password? Hubungi guru laboran.",
-                                style: GoogleFonts.poppins(
-                                  fontSize: 14,
-                                )),
+                            Text(
+                              "Lupa password? Hubungi guru laboran.",
+                              style: GoogleFonts.inter(fontSize: 14),
+                            ),
                           ],
-                        )
+                        ),
                       ],
                     ),
                   ],
@@ -118,21 +143,26 @@ class LoginScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Menyatukan Upaya untuk Kemajuan Siswa",
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.poppins(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        )), SizedBox(height: 15),
-                    Text("Jurnalku adalah aplikasi cerdas yang membantu guru dan siswa dalam memantau dan mengelola kompetensi keahlian siswa secara efektif.",
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.poppins(
-                            fontSize: 14,
-                            color: Colors.grey[700]
-                        ))
-                  ]
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Menyatukan Upaya untuk Kemajuan Siswa",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.inter(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 15),
+                  Text(
+                    "Jurnalku adalah aplikasi cerdas yang membantu guru dan siswa dalam memantau dan mengelola kompetensi keahlian siswa secara efektif.",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
+                      color: Colors.grey[700],
+                    ),
+                  ),
+                ],
               ),
             ),
             SizedBox(height: 40),
@@ -140,32 +170,38 @@ class LoginScreen extends StatelessWidget {
             FeatureCard(
               icon: FontAwesomeIcons.school,
               title: 'Dirancang untuk Sekolah Kami',
-              subtitle: 'Dikembangkan khusus untuk memenuhi kebutuhan sekolah kami dengan fokus pada kemajuan siswa kami.',
+              subtitle:
+                  'Dikembangkan khusus untuk memenuhi kebutuhan sekolah kami dengan fokus pada kemajuan siswa kami.',
             ),
             FeatureCard(
               icon: FontAwesomeIcons.chartArea,
               title: 'Pemantauan yang Terstruktur',
-              subtitle: 'Memudahkan guru dalam menyusun dan memantau daftar kompetensi keahlian yang harus dikuasai siswa.',
+              subtitle:
+                  'Memudahkan guru dalam menyusun dan memantau daftar kompetensi keahlian yang harus dikuasai siswa.',
             ),
             FeatureCard(
               icon: Icons.person,
               title: 'Fitur Praktis dan Bermanfaat',
-              subtitle: 'Termasuk reminder otomatis, grafik, perkembangan, dan analisis mendalam untuk efektivitas belajar.',
+              subtitle:
+                  'Termasuk reminder otomatis, grafik, perkembangan, dan analisis mendalam untuk efektivitas belajar.',
             ),
             FeatureCard(
-                icon: FontAwesomeIcons.piedPiperHat,
-                title: "Pengajuan Kompetensi oleh Siswa",
-                subtitle: "Siswa dapat mengajukan kompetensi yang telah dikuasai untuk diverifikasi oleh guru.",
+              icon: FontAwesomeIcons.piedPiperHat,
+              title: "Pengajuan Kompetensi oleh Siswa",
+              subtitle:
+                  "Siswa dapat mengajukan kompetensi yang telah dikuasai untuk diverifikasi oleh guru.",
             ),
             FeatureCard(
               icon: Icons.edit_note,
               title: "Validasi dan Tanda Tangan Guru",
-              subtitle: "Setiap kompetensi yang disetujui akan diberikan tanda terima dan tanda tangan guru sebagai bukti.",
+              subtitle:
+                  "Setiap kompetensi yang disetujui akan diberikan tanda terima dan tanda tangan guru sebagai bukti.",
             ),
             FeatureCard(
               icon: Icons.monitor,
               title: "Pantauan Real-Time dan Transparan",
-              subtitle: "Monitoring langsung, menciptakan lingkungan belajar yang efisien.",
+              subtitle:
+                  "Monitoring langsung, menciptakan lingkungan belajar yang efisien.",
             ),
             SizedBox(height: 20),
 
@@ -190,23 +226,25 @@ class LoginScreen extends StatelessWidget {
                       Icon(FontAwesomeIcons.linkedin, color: Colors.white),
                       SizedBox(width: 20),
                       Icon(FontAwesomeIcons.youtube, color: Colors.white),
-
                     ],
-                  ), SizedBox(height: 20),
+                  ),
+                  SizedBox(height: 20),
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("© GEN-28 PPLG SMK Wikrama Bogor. All Rights Reserved.",
-                          style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              color: Colors.white
-                          ))
+                      Text(
+                        "© GEN-28 PPLG SMK Wikrama Bogor. All Rights Reserved.",
+                        style: GoogleFonts.inter(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      ),
                     ],
-                  )
+                  ),
                 ],
               ),
-              ),
+            ),
           ],
         ),
       ),
@@ -253,21 +291,25 @@ class FeatureCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title,
-                      style: GoogleFonts.poppins(
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                      )),
+                  Text(
+                    title,
+                    style: GoogleFonts.inter(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   SizedBox(height: 5),
-                  Text(subtitle,
-                      style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        color: Colors.grey[700],
-                        height: 1.5,
-                      )),
+                  Text(
+                    subtitle,
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
+                      color: Colors.grey[700],
+                      height: 1.5,
+                    ),
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

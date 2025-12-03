@@ -35,7 +35,6 @@ class AtitudeRecord extends StatelessWidget {
               ),
               SizedBox(height: 30),
               Container(
-                height: 130,
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
                 color: Colors.yellow[50],
@@ -50,21 +49,23 @@ class AtitudeRecord extends StatelessWidget {
                   children: [
                     Icon(Icons.warning_amber_outlined, size: 24, color: Colors.orange[800],),
                     SizedBox(width: 8),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Perhatian", style: GoogleFonts.inter(
-                          color: Colors.brown[700],
-                          fontWeight: FontWeight.bold
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Perhatian", style: GoogleFonts.inter(
+                            color: Colors.brown[700],
+                            fontWeight: FontWeight.bold
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 5),
-                        Text("Jika Anda merasa ada catatan yang tidak sesuai atau\nkeliru, silakan hubungi guru jurusan untuk mengajukan\nklarifikasi.",
-                          style: GoogleFonts.inter(
-                            color: Colors.brown[800],
-                          ),
-                        )
-                      ],
+                          SizedBox(height: 5),
+                          Text("Jika Anda merasa ada catatan yang tidak sesuai atau keliru, silakan hubungi guru jurusan untuk mengajukan\nklarifikasi.",
+                            style: GoogleFonts.inter(
+                              color: Colors.brown[800],
+                            ),
+                          )
+                        ],
+                      ),
                     )
                   ],
                 ),

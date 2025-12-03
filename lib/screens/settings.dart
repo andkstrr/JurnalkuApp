@@ -61,11 +61,12 @@ class SettingsScreen extends StatelessWidget {
                                 bottom: 0,
                                 right: 0,
                                 child: Container(
+                                  height: 35,
+                                  width: 35,
                                   decoration: BoxDecoration(
                                     color: Colors.blue, 
                                     shape: BoxShape.circle,
                                     border: Border.all(color: Colors.white, width: 2), 
-                                    
                                   ),
                                   child: CircleAvatar(
                                     backgroundColor: Colors.blue[900],
@@ -74,7 +75,7 @@ class SettingsScreen extends StatelessWidget {
                                       icon: Icon(
                                         Icons.camera_alt_outlined,
                                         color: Colors.white,
-                                        size: 20,
+                                        size: 16,
                                       ),
                                     ),
                                   ),
@@ -156,7 +157,7 @@ class SettingsScreen extends StatelessWidget {
                       text: "Kata Sandi Baru",
                       hintText: "Masukkan password",
                     ),
-                    const SizedBox(height: 50),
+                    const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {}, 
                       style: ElevatedButton.styleFrom(

@@ -3,9 +3,10 @@ import 'package:jurnalku_app/widgets/app_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jurnalku_app/widgets/footer.dart';
 import 'package:jurnalku_app/widgets/form_search_field.dart';
+import 'package:jurnalku_app/widgets/student_profile_card.dart';
+import 'package:jurnalku_app/screens/login.dart';
 import 'dart:ui';
 
-import 'package:jurnalku_app/widgets/student_profile_card.dart';
 
 class ExploreScreen extends StatelessWidget {
   const ExploreScreen({super.key});
@@ -14,11 +15,14 @@ class ExploreScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: ReusableAppBar(
-        userName: "Andika Satrio Nurcahyo",
-        userRombel: "PPLG XII-5",
-        onLeadingPressed: () {},
-        leadingIcon: Icons.home_outlined,
+      appBar: DefaultAppBar(
+        buttonLabel: 'Login',
+        onButtonPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const LoginScreen()),
+          );
+        },
       ),
       body: SafeArea(
         child: SingleChildScrollView(
