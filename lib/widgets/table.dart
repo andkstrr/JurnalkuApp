@@ -453,6 +453,7 @@ class _HeaderCell extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 10.0, top: 10.0),
       child: Text(
         text,
+        textAlign: TextAlign.center,
         style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 11
@@ -461,4 +462,3 @@ class _HeaderCell extends StatelessWidget {
     );
   }
 }
-  
