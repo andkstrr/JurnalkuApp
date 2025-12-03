@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class RecordTable extends StatelessWidget {
   const RecordTable({super.key, this.items = const []});
@@ -253,7 +252,7 @@ class JobTable extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 12),
       child: Row(
         children: [
-          _ClickableHeader(label: "Pekerjaan", width: 200),
+          _ClickableHeader(label: "Pekerjaan", width: 160),
           _ClickableHeader(label: "Tgl", width: 80),
           _ClickableHeader(label: "Saksi", width: 120),
         ],

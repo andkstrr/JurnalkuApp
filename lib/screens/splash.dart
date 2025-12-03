@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jurnalku_app/screens/attitude_record.dart';
-import 'package:jurnalku_app/screens/dashboard.dart';
-import 'package:jurnalku_app/screens/journal_page.dart';
-import 'package:jurnalku_app/screens/witness_demand.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:jurnalku_app/screens/explore.dart';
-import 'package:jurnalku_app/screens/login.dart';
-import 'package:jurnalku_app/screens/settings.dart';
-import 'package:jurnalku_app/screens/user_guide.dart';
 
 // Splash Screen Utama
 class SplashScreen extends StatefulWidget {
@@ -27,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
       // pushReplacement mencegah pengguna kembali ke splash screen dengan tombol kembali
       if (mounted) {
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const JournalPage()),
+          MaterialPageRoute(builder: (context) => const AtitudeRecord()),
         );
       }
     });

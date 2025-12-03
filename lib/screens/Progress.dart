@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jurnalku_app/widgets/competency_statistic_card.dart';
-import 'package:jurnalku_app/widgets/header_section.dart';
 import 'package:jurnalku_app/widgets/app_bar.dart';
 import 'package:jurnalku_app/widgets/table.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ProgressScreen extends StatelessWidget {
   const ProgressScreen({super.key});
@@ -12,7 +12,7 @@ class ProgressScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: ReusableAppBar(
-        userName: "Muhammad Attala Keanu Cheva Prabowo",
+        userName: "M. Attala Keanu Cheva P.",
         userRombel: "PPLG XII-5",
         onLeadingPressed: () {},
         leadingIcon: Icons.home_outlined,
@@ -22,11 +22,35 @@ class ProgressScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              HeaderSection(
-                  title: "Progress Belajar",
-                  subtitle: "Pantau perkembangan kompetensi dan materi pembelajaran Anda",
-                  date: "Thursday, 20 November 2025"),
-              SizedBox(height: 20),
+              Text(
+              "Progress Belajar",
+              style: GoogleFonts.inter(
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+              ),
+            ),
+            Text(
+              "Pantau perkembangan kompetensi dan materi pembelajaran Anda",
+              style: GoogleFonts.inter(fontSize: 16),
+            ),
+            SizedBox(height: 15),
+            Container(
+              width: 230,
+              height: 40,
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.blue[50],
+                borderRadius: BorderRadius.circular(10)
+              ),
+              child: Text(
+                "Thursday, 20 November 2025", 
+                style: GoogleFonts.inter(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.blue[700]
+                ),),
+            ),
+            SizedBox(height: 15),
 
               CompetencyStatisticCard(
                   title: "Total pengajuan",

@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jurnalku_app/screens/attitude_record.dart';
+import 'package:jurnalku_app/screens/journal_page.dart';
+import 'package:jurnalku_app/screens/profile.dart';
+import 'package:jurnalku_app/screens/progress.dart';
+import 'package:jurnalku_app/screens/witness_demand.dart';
 import 'package:jurnalku_app/widgets/academic_progress.dart';
 import 'package:jurnalku_app/widgets/app_bar.dart';
 import 'package:jurnalku_app/widgets/application_menu_card.dart';
@@ -157,7 +162,9 @@ class DashboardScreen extends StatelessWidget {
                             icon: Icons.person_3_outlined,
                             title: "Profil",
                             subtitle: "Lihat dan kelola profilmu di sini.",
-                            onTap: () {}
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileScreen()));  
+                            }
                           ),
                           const SizedBox(height: 20),
                           const Divider(height: 1),
@@ -166,7 +173,9 @@ class DashboardScreen extends StatelessWidget {
                             icon: Icons.backpack_outlined,
                             title: "Portofolio",
                             subtitle: "Lihat dan kelola portofoliomu kompetensimu di sini.",
-                            onTap: () {}
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileScreen()));
+                            }
                           ),
                           const SizedBox(height: 20),
                           const Divider(height: 1),
@@ -175,7 +184,9 @@ class DashboardScreen extends StatelessWidget {
                             icon: Icons.document_scanner_outlined,
                             title: "Sertifikat",
                             subtitle: "Lihat dan unduh sertifikat kompetensimu di sini.",
-                            onTap: () {}
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileScreen()));
+                            }
                           ),
                         ],
                       ),
@@ -202,7 +213,9 @@ class DashboardScreen extends StatelessWidget {
                             icon: Icons.menu_book_outlined,
                             title: "Jurnal Pembiasaan",
                             subtitle: "Catat dan pantau kegiatan pembiasaan harianmu",
-                            onTap: () {}
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const JournalPage()));
+                            }
                           ),
                           const SizedBox(height: 20),
                           const Divider(height: 1),
@@ -211,7 +224,9 @@ class DashboardScreen extends StatelessWidget {
                             icon: Icons.person_3_outlined,
                             title: "Permintaan saksi",
                             subtitle: "Lihat teman yang mengajukan permintaan saksi.",
-                            onTap: () {}
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const WitnessDemand()));
+                            }
                           ),
                           const SizedBox(height: 20),
                           const Divider(height: 1),
@@ -220,7 +235,9 @@ class DashboardScreen extends StatelessWidget {
                             icon: Icons.align_vertical_bottom_sharp,
                             title: "Progress",
                             subtitle: "Lihat kemajuan kompetensi dan pencapain belajarmu.",
-                            onTap: () {}
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProgressScreen()));
+                            }
                           ),
                           const SizedBox(height: 20),
                           const Divider(height: 1),
@@ -229,7 +246,9 @@ class DashboardScreen extends StatelessWidget {
                             icon: Icons.warning_amber_outlined,
                             title: "Catatan Sikap",
                             subtitle: "Lihat catatan sikap dan perilaku dari guru.",
-                            onTap: () {}
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const AtitudeRecord()));
+                            }
                           ),
                         ],
                       ),

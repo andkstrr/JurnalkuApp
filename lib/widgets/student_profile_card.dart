@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jurnalku_app/screens/profile.dart';
 
 class StudentProfileCard extends StatelessWidget {
   const StudentProfileCard({super.key,
@@ -112,7 +113,9 @@ class StudentProfileCard extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileScreen()));
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blue[900],
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
