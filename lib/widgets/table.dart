@@ -252,7 +252,7 @@ class JobTable extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 12),
       child: Row(
         children: [
-          _ClickableHeader(label: "Pekerjaan", width: 200),
+          _ClickableHeader(label: "Pekerjaan", width: 160),
           _ClickableHeader(label: "Tgl", width: 80),
           _ClickableHeader(label: "Saksi", width: 120),
         ],

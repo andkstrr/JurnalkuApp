@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jurnalku_app/screens/attitude_record.dart';
 import 'package:jurnalku_app/screens/dashboard.dart';
-import 'package:jurnalku_app/screens/habit_journal.dart';
+import 'package:jurnalku_app/screens/journal_page.dart';
 import 'package:jurnalku_app/screens/settings.dart';
 import 'package:jurnalku_app/screens/user_guide.dart';
 import 'package:jurnalku_app/screens/witness_demand.dart';
@@ -72,7 +72,7 @@ class ReusableAppBar extends StatelessWidget implements PreferredSizeWidget {
             } else if (value == MenuItem.habitJournal) {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HabitJournalScreen()),
+                MaterialPageRoute(builder: (context) => JournalPage()),
               );
             } else if (value == MenuItem.witnessRequest) {
               Navigator.push(
