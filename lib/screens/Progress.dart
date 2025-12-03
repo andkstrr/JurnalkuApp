@@ -71,6 +71,8 @@ class ProgressScreen extends StatelessWidget {
               SizedBox(height: 35),
               ProgressTable(title: "GIM", rows: []),
               SizedBox(height: 35),
+              ProgressTable(title: "test", rows: []),
+              SizedBox(height: 35),
             ]
           ),
         ),
