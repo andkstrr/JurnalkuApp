@@ -87,16 +87,64 @@ class ProgressScreen extends StatelessWidget {
                 icon: Icons.lightbulb_outline,
               ), SizedBox(height: 30),
 
-              ProgressTable(title: "Project Work", rows: []),
-              SizedBox(height: 35),
-              ProgressTable(title: "Mobile Apps", rows: []),
-              SizedBox(height: 35),
-              ProgressTable(title: "UKK (Uji Kompetensi Keahlian)", rows: []),
-              SizedBox(height: 35),
-              ProgressTable(title: "GIM", rows: []),
-              SizedBox(height: 35),
-              ProgressTable(title: "test", rows: []),
-              SizedBox(height: 35),
+              ProgressTable(
+                title: "Project Work",
+                data: [
+                  ProgressData(
+                    kompetensi: "Laravel mandiri",
+                    guru: "Bu Rani",
+                    tanggal: "3 Des 2025",
+                    status: "Selesai",
+                    catatan: "Sudah sangat baik",
+                  ),
+                  ProgressData(
+                    kompetensi: "Integrasi API",
+                    guru: "Pak Budi",
+                    tanggal: "5 Des 2025",
+                    status: "Dalam Proses",
+                    catatan: "Perlu diperbaiki responsenya",
+                  ),
+                ],
+              ), SizedBox(height: 35),
+
+              ProgressTable(
+                title: "Mobile Apps",
+                data: [
+                  ProgressData(
+                    kompetensi: "Desain UI Mobile",
+                    guru: "Bu Rani",
+                    tanggal: "3 Des 2025",
+                    status: "Selesai",
+                    catatan: "Sudah sangat baik",
+                  ),
+                ],
+              ), SizedBox(height: 35),
+
+              ProgressTable(
+                title: "UKK (Uji Kompetensi Keahlian)",
+                data: [
+                  ProgressData(
+                    kompetensi: "Ujian Kompetensi Keahlian",
+                    guru: "Bu Rani",
+                    tanggal: "3 Des 2025",
+                    status: "Selesai",
+                    catatan: "Sudah sangat baik",
+                  ),
+                ],
+              ), SizedBox(height: 35),
+
+              ProgressTable(
+                title: "GIM",
+                data: [
+                  ProgressData(
+                    kompetensi: "Membuat 3d asset",
+                    guru: "Bu Rani",
+                    tanggal: "3 Des 2025",
+                    status: "Selesai",
+                    catatan: "Sudah sangat baik",
+                  ),
+                ],
+              ), SizedBox(height: 35),
             ]
           ),
         ),

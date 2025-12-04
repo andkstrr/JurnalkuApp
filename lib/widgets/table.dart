@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // class RecordTable extends StatelessWidget {
 //   const RecordTable({super.key, this.items = const []});
@@ -295,7 +296,6 @@ class DetailItem extends StatelessWidget {
 }
 
 
-
 class SimpleRecordTable extends StatelessWidget {
   const SimpleRecordTable({super.key, this.items = const []});
   final List<Map<String, dynamic>> items;
@@ -550,111 +550,171 @@ class _ClickableHeader extends StatelessWidget {
   }
   }
 
-class ProgressTable extends StatelessWidget {
+class ProgressData {
+  final String kompetensi;
+  final String guru;
+  final String tanggal;
+  final String status;
+  final String catatan;
+
+  ProgressData({
+    required this.kompetensi,
+    required this.guru,
+    required this.tanggal,
+    required this.status,
+    required this.catatan,
+  });
+}
+
+class ProgressTable extends StatefulWidget {
   final String title;
-  final List<TableRow> rows;
+  final List<ProgressData> data;
 
   const ProgressTable({
     super.key,
     required this.title,
-    required this.rows,
+    required this.data,
   });
+
+  @override
+  State<ProgressTable> createState() => _ProgressTableState();
+}
+
+class _ProgressTableState extends State<ProgressTable> {
+  bool isExpanded = false;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(bottom: 24),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(
-          width: 0.5,
-          color: Colors.grey,
-        ),
-        gradient: LinearGradient(
-          colors: [Colors.grey.shade100, Colors.grey.shade200],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 6,
+            offset: Offset(0, 3),
+          ),
+        ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
+          // ====== HEADER CARD ======
+          InkWell(
+            borderRadius: BorderRadius.circular(12),
+            onTap: () {
+              setState(() => isExpanded = !isExpanded);
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Text title di kiri
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.title,
+                          style: GoogleFonts.inter(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          "Kompetensi dan materi pembelajaran",
+                          style: GoogleFonts.inter(
+                            fontSize: 13,
+                            color: Colors.grey[700],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(height: 5),
-                Text(
-                  "Kompetensi dan materi pembelajaran",
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.grey[600],
-                  ),
-                )
-              ],
+
+                  // Arrow icon
+                  Icon(
+                    isExpanded
+                        ? Icons.keyboard_arrow_up
+                        : Icons.keyboard_arrow_down,
+                    size: 28,
+                    color: Colors.grey[700],
+                  )
+                ],
+              ),
             ),
-          ),
-          Divider(
-            height: 1,
-            color: Colors.grey[300],
           ),
 
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Table(
-              columnWidths: const {
-                0: FlexColumnWidth(2),
-                1: FlexColumnWidth(1),
-                2: FlexColumnWidth(1),
-                3: FlexColumnWidth(1),
-                4: FlexColumnWidth(2),
-              },
-              border: TableBorder(
-                horizontalInside: BorderSide(color: Colors.grey.shade300),
-              ),
-              children: [
-                const TableRow(
-                  decoration: BoxDecoration(color: Colors.transparent),
-                  children: [
-                    _HeaderCell("KOMPETENSI"),
-                    _HeaderCell("GURU"),
-                    _HeaderCell("TANGGAL"),
-                    _HeaderCell("STATUS"),
-                    _HeaderCell("CATATAN"),
-                  ],
-                ),
-              ],
-            ),
+          // ====== DROPDOWN CONTENT ======
+          AnimatedCrossFade(
+            firstChild: SizedBox(),
+            secondChild: _buildContent(),
+            crossFadeState: isExpanded
+                ? CrossFadeState.showSecond
+                : CrossFadeState.showFirst,
+            duration: const Duration(milliseconds: 250),
           ),
         ],
       ),
     );
   }
-}
 
-class _HeaderCell extends StatelessWidget {
-  final String text;
-  const _HeaderCell(this.text);
-
-  @override
-  Widget build(BuildContext context) {
+  // ====== CONTENT (BUKAN TABEL, TAPI TEKS VERTIKAL) ======
+  Widget _buildContent() {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10.0, top: 10.0),
-      child: Text(
-        text,
-        textAlign: TextAlign.center,
-        style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 11
-        ),
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+      child: Column(
+        children: widget.data.map((item) {
+          return Container(
+            margin: const EdgeInsets.only(bottom: 12),
+            padding: const EdgeInsets.all(14),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF7F7F7),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _textRow("Kompetensi", item.kompetensi),
+                _textRow("Guru", item.guru),
+                _textRow("Tanggal", item.tanggal),
+                _textRow("Status", item.status),
+                _textRow("Catatan", item.catatan),
+              ],
+            ),
+          );
+        }).toList(),
+      ),
+    );
+  }
+
+  // ====== HELPER ROW "LABEL : VALUE" ======
+  Widget _textRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 6),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 100,
+            child: Text(
+              "$label:",
+              style: GoogleFonts.inter(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Text(
+              value,
+              style: GoogleFonts.inter(fontSize: 12),
+            ),
+          ),
+        ],
       ),
     );
   }
