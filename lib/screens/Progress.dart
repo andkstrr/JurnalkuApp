@@ -130,6 +130,13 @@ class ProgressScreen extends StatelessWidget {
                     status: "Selesai",
                     catatan: "Sudah sangat baik",
                   ),
+                  ProgressData(
+                    kompetensi: "Ujian Kompetensi Keahlian",
+                    guru: "Bu Siti",
+                    tanggal: "3 Des 2025",
+                    status: "Selesai",
+                    catatan: "Sudah sangat baik",
+                  ),
                 ],
               ), SizedBox(height: 35),
 
