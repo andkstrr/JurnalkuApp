@@ -11,7 +11,9 @@ class JurnalkuApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Jurnalku',
       home: SplashScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
