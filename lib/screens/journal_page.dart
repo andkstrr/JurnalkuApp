@@ -144,7 +144,7 @@ class JournalPage extends StatelessWidget {
                   );
                 },
               ),
-              SizedBox(height: 35),
+              SizedBox(height: 25),
               Text(
                 "B. Pekerjaan yang dilakukan",
                 style: GoogleFonts.inter(
@@ -153,8 +153,41 @@ class JournalPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 15),
-              JobTable(),
-              SizedBox(height: 35),
+              ListView.separated(
+                itemCount: 3,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                separatorBuilder: (context, index) =>
+                    const SizedBox(height: 10),
+                itemBuilder: (context, index) {
+                  return Card(
+                    color: Colors.grey[100],
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: ListTile(
+                        leading: Icon(Icons.work_history),
+                        title: Text(
+                          "Pekerjaan ${index + 1}",
+                          style: GoogleFonts.inter(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        contentPadding: EdgeInsets.all(5),
+                        subtitle: Text(
+                          "03 Desember 2025",
+                          style: GoogleFonts.inter(
+                            fontSize: 14,
+                            color: Colors.grey[700],
+                          ),
+                        ),
+                        trailing: Text("Saksi : Cahyo"),
+                      ),
+                    ),
+                  );
+                },
+              ),
+              SizedBox(height: 25),
               Text(
                 "C. Materi yang dipelajari",
                 style: GoogleFonts.inter(
@@ -163,8 +196,80 @@ class JournalPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 15),
-              JobTable(),
-              SizedBox(height: 15),
+              ListView.separated(
+                itemCount: 3,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                separatorBuilder: (context, index) =>
+                    const SizedBox(height: 10),
+                itemBuilder: (context, index) => Card(
+                  color: Colors.grey[100],
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: ExpansionTile(
+                    title: Text(
+                      'Belajar Flutter ${index + 1}',
+                      style: TextStyle(fontWeight: FontWeight.w500),
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    collapsedShape: BorderDirectional(),
+                    subtitle: Text(
+                      '20 November 2025',
+                      style: TextStyle(color: Colors.grey[600]),
+                    ),
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(16.0),
+                        decoration: BoxDecoration(color: Colors.grey[50]),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Status:',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 8,
+                                    vertical: 4,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.green,
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                  child: Text(
+                                    'Approved',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 12),
+                            Text(
+                              'Catatan Guru:',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text('Bagus, pemahaman sudah cukup baik.'),
+                            const SizedBox(height: 12),
+                            Text(
+                              'Catatan Siswa:',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text('Saya sudah memahami materi ini dengan baik.'),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               Row(
                 children: [
                   Row(
@@ -177,7 +282,10 @@ class JournalPage extends StatelessWidget {
                   const SizedBox(width: 15),
                   Row(
                     children: [
-                      CircleAvatar(radius: 6, backgroundColor: Colors.yellow[700]),
+                      CircleAvatar(
+                        radius: 6,
+                        backgroundColor: Colors.yellow[700],
+                      ),
                       SizedBox(width: 8),
                       Text('P: Pending'),
                     ],
@@ -201,7 +309,7 @@ class JournalPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 15),
-              // PoinTable()
+              HabitJournalTable(),
             ],
           ),
         ),
