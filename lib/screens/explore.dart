@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:jurnalku_app/models/student_model.dart';
+import 'package:jurnalku_app/services/list_student_service.dart';
 import 'package:jurnalku_app/widgets/app_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jurnalku_app/widgets/footer.dart';
 import 'package:jurnalku_app/widgets/form_search_field.dart';
 import 'package:jurnalku_app/widgets/student_profile_card.dart';
 import 'package:jurnalku_app/screens/login.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'dart:ui';
 
-
-class ExploreScreen extends StatelessWidget {
+class ExploreScreen extends StatefulWidget {
   const ExploreScreen({super.key});
+
+  @override
+  State<ExploreScreen> createState() => _ExploreScreenState();
+}
+
+class _ExploreScreenState extends State<ExploreScreen> {
+  late Future<List<StudentModel>> futureStudents;
+
+  @override
+  void initState() {
+    super.initState();
+    futureStudents = ListStudentService.fetchStudents();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +41,6 @@ class ExploreScreen extends StatelessWidget {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -125,37 +139,63 @@ class ExploreScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    StudentProfileCard(
-                      name: "Andika Satrio Nurcahyo",
-                      nis: 12309526,
-                      rombel: "PPLG XII-5",
-                      rayon: "Cic 8",
-                      countOfPortfolio: 12,
-                      countOfCertificate: 34,
-                    ),
-                    const SizedBox(height: 20),
-                    StudentProfileCard(
-                      name: "M. Attala Keanu Cheva Prabowo",
-                      nis: 12309835,
-                      rombel: "PPLG XII-5",
-                      rayon: "Cis 5",
-                      countOfPortfolio: 8,
-                      countOfCertificate: 56,
-                    ),
-                    const SizedBox(height: 20),
-                    StudentProfileCard(
-                      name: "Rizqya Adzra Zahira Sudrajat",
-                      nis: 12310021,
-                      rombel: "PPLG XII-5",
-                      rayon: "Taj 4",
-                      countOfPortfolio: 13,
-                      countOfCertificate: 56,
+
+                    // map data
+                    FutureBuilder(
+                      future: futureStudents,
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Skeletonizer(
+                            enabled: true,
+                            child: StudentProfileCard(
+                              name: "Nama",
+                              nis: 0,
+                              rombel: "Rombel",
+                              rayon: "Rayon",
+                              countOfPortfolio: 0,
+                              countOfCertificate: 0,
+                            ),
+                          );
+                        } else if (snapshot.hasError) {
+                          return Text('Error: ${snapshot.error}');
+                        } else if (!snapshot.hasData ||
+                            snapshot.data!.isEmpty) {
+                          return Text('TIdak ada data');
+                        }
+
+                        // success
+                        final students = snapshot.data!;
+
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ListView.separated(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: students.length,
+                              separatorBuilder: (context, index) => const SizedBox(height: 25),
+                              itemBuilder: (context, index) {
+                                final student = students[index];
+                                return StudentProfileCard(
+                                  name: student.name,
+                                  nis: student.nis,
+                                  rombel: "${student.rombel}",
+                                  rayon: "${student.rayon}",
+                                  countOfPortfolio: 0,
+                                  countOfCertificate: 0,
+                                );
+                              }
+                            ),
+                          ],
+                        );
+                      },
                     ),
                   ],
                 ),
               ),
               const SizedBox(height: 25),
-              Footer()
+              Footer(),
             ],
           ),
         ),

@@ -1,23 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jurnalku_app/screens/detail_student.dart';
 import 'package:jurnalku_app/screens/profile.dart';
+import 'package:jurnalku_app/models/student_model.dart';
 
 class StudentProfileCard extends StatelessWidget {
+  final StudentModel student;
+
   const StudentProfileCard({super.key,
-    required this.name,
-    required  this.nis,
-    required this.rombel,
-    required this.rayon,
-    required this.countOfPortfolio,
-    required this.countOfCertificate
+    required this.student,
   });
 
-  final String name;
-  final int nis;
-  final String rombel;
-  final String rayon;
-  final int countOfPortfolio;
-  final int countOfCertificate;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +43,7 @@ class StudentProfileCard extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           Text(
-            name,
+            student.name,
             style: GoogleFonts.inter(
               fontSize: 18,
               fontWeight: FontWeight.w600,
@@ -58,7 +51,7 @@ class StudentProfileCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            "$nis | $rombel | $rayon ",
+            "${student.nis} | ${student.rombel} | ${student.rayon} ",
             style: GoogleFonts.inter(
               fontSize: 13,
               fontWeight: FontWeight.w500,
@@ -81,7 +74,7 @@ class StudentProfileCard extends StatelessWidget {
                   ),
                   const SizedBox(width: 5),
                   Text(
-                    "$countOfPortfolio Portofolio",
+                    "2 Portofolio",
                     style: GoogleFonts.inter(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
@@ -100,7 +93,7 @@ class StudentProfileCard extends StatelessWidget {
                   ),
                   const SizedBox(width: 5),
                   Text(
-                    "$countOfCertificate Sertifikat",
+                    "2 Sertifikat",
                     style: GoogleFonts.inter(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
@@ -114,7 +107,7 @@ class StudentProfileCard extends StatelessWidget {
           const SizedBox(height: 10),
           ElevatedButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) =>  DetailStudentScreen(student: student)));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blue[900],
