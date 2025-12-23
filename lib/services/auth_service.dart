@@ -8,16 +8,16 @@ class AuthService {
   static const String baseUrl = 'http://localhost:8000/api';
 
   static Future<LoginResponse> login({
-    required String email,
+    required String username,
     required String password,
   }) async {
     final response = await http.post(
-      Uri.parse('$baseUrl/login'),
+      Uri.parse('$baseUrl/login/'),
       headers: {
         'Content-Type': 'application/json',
       },
       body: jsonEncode({
-        'email': email,
+        'username': username,
         'password': password,
       }),
     );

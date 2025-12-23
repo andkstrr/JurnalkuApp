@@ -14,18 +14,40 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jurnalku_app/widgets/footer.dart';
 import 'package:jurnalku_app/widgets/section_title.dart';
 
-class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({super.key});
+class DashboardScreen extends StatefulWidget {
+  const DashboardScreen({super.key, this.successLogin = false});
+
+  final bool successLogin;
 
   @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.successLogin) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Selamat datang di Jurnalku!'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      });
+    }
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: ReusableAppBar(
-        userName: "Andika Satrio Nurcahyo", 
-        userRombel: "PPLG XII-5", 
-        onLeadingPressed: () {}, 
-        leadingIcon: Icons.home_outlined
+        userName: "Andika Satrio Nurcahyo",
+        userRombel: "PPLG XII-5",
+        onLeadingPressed: () {},
+        leadingIcon: Icons.home_outlined,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -42,7 +64,7 @@ class DashboardScreen extends StatelessWidget {
                       child: SvgPicture.asset(
                         'assets/images/bgsecondary.svg',
                         fit: BoxFit.cover,
-                      )
+                      ),
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -64,9 +86,9 @@ class DashboardScreen extends StatelessWidget {
                             fontSize: 14,
                             color: Colors.white,
                           ),
-                        )
+                        ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -77,7 +99,10 @@ class DashboardScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 30),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 25,
+                        vertical: 30,
+                      ),
                       width: double.infinity,
                       height: 250,
                       decoration: BoxDecoration(
@@ -87,7 +112,7 @@ class DashboardScreen extends StatelessWidget {
                           colors: [
                             const Color.fromARGB(255, 15, 87, 201),
                             const Color.fromARGB(255, 20, 65, 133),
-                          ]
+                          ],
                         ),
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -108,41 +133,45 @@ class DashboardScreen extends StatelessWidget {
                             style: GoogleFonts.inter(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Colors.white
+                              color: Colors.white,
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
                     const SizedBox(height: 20),
-        
+
                     // DASHBOARD CARDs
                     DashboardCard(
                       iconPath: "assets/icons/school.svg",
                       title: "Dirancang Khusus",
-                      subtitle: "Memenuhi kebutuhan spesifik\nsekolah kami dengan fokus pada\nkemajuan siswa."
+                      subtitle:
+                          "Memenuhi kebutuhan spesifik\nsekolah kami dengan fokus pada\nkemajuan siswa.",
                     ),
                     const SizedBox(height: 20),
                     DashboardCard(
                       iconPath: "assets/icons/student.svg",
                       title: "Efektif",
-                      subtitle: "Memudahkan siswa dan guru melihat\nperkembangan secara real-time."
+                      subtitle:
+                          "Memudahkan siswa dan guru melihat\nperkembangan secara real-time.",
                     ),
                     const SizedBox(height: 20),
                     DashboardCard(
                       iconPath: "assets/icons/graduate.svg",
                       title: "Terintegrasi",
-                      subtitle: "Pengajuan kompetensi siswa, validasi\ndan laporan perkembangan yang\ntransparan."
+                      subtitle:
+                          "Pengajuan kompetensi siswa, validasi\ndan laporan perkembangan yang\ntransparan.",
                     ),
                     const SizedBox(height: 35),
-        
+
                     // MENU APLIKASI
-                    SectionTitle(
-                      sectionTitle: "MENU APLIKASI",
-                    ),
+                    SectionTitle(sectionTitle: "MENU APLIKASI"),
                     const SizedBox(height: 15),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 25,
+                        vertical: 20,
+                      ),
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
@@ -152,7 +181,7 @@ class DashboardScreen extends StatelessWidget {
                             color: Colors.grey.withOpacity(0.2),
                             spreadRadius: 2,
                             blurRadius: 5,
-                            offset: const Offset(0, 2), 
+                            offset: const Offset(0, 2),
                           ),
                         ],
                       ),
@@ -163,8 +192,13 @@ class DashboardScreen extends StatelessWidget {
                             title: "Profil",
                             subtitle: "Lihat dan kelola profilmu di sini.",
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileScreen()));  
-                            }
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const ProfileScreen(),
+                                ),
+                              );
+                            },
                           ),
                           const SizedBox(height: 20),
                           const Divider(height: 1),
@@ -172,10 +206,16 @@ class DashboardScreen extends StatelessWidget {
                           ApplicationMenuCard(
                             icon: Icons.backpack_outlined,
                             title: "Portofolio",
-                            subtitle: "Lihat dan kelola portofoliomu kompetensimu di sini.",
+                            subtitle:
+                                "Lihat dan kelola portofoliomu kompetensimu di sini.",
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileScreen()));
-                            }
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const ProfileScreen(),
+                                ),
+                              );
+                            },
                           ),
                           const SizedBox(height: 20),
                           const Divider(height: 1),
@@ -183,10 +223,16 @@ class DashboardScreen extends StatelessWidget {
                           ApplicationMenuCard(
                             icon: Icons.document_scanner_outlined,
                             title: "Sertifikat",
-                            subtitle: "Lihat dan unduh sertifikat kompetensimu di sini.",
+                            subtitle:
+                                "Lihat dan unduh sertifikat kompetensimu di sini.",
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileScreen()));
-                            }
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const ProfileScreen(),
+                                ),
+                              );
+                            },
                           ),
                         ],
                       ),
@@ -194,7 +240,10 @@ class DashboardScreen extends StatelessWidget {
                     const SizedBox(height: 25),
                     Container(
                       width: double.infinity,
-                      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 25,
+                        vertical: 20,
+                      ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
                         color: Colors.white,
@@ -203,7 +252,7 @@ class DashboardScreen extends StatelessWidget {
                             color: Colors.grey.withOpacity(0.2),
                             spreadRadius: 2,
                             blurRadius: 5,
-                            offset: const Offset(0, 2), 
+                            offset: const Offset(0, 2),
                           ),
                         ],
                       ),
@@ -212,10 +261,16 @@ class DashboardScreen extends StatelessWidget {
                           ApplicationMenuCard(
                             icon: Icons.menu_book_outlined,
                             title: "Jurnal Pembiasaan",
-                            subtitle: "Catat dan pantau kegiatan pembiasaan harianmu",
+                            subtitle:
+                                "Catat dan pantau kegiatan pembiasaan harianmu",
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => const JournalPage()));
-                            }
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const JournalPage(),
+                                ),
+                              );
+                            },
                           ),
                           const SizedBox(height: 20),
                           const Divider(height: 1),
@@ -223,10 +278,16 @@ class DashboardScreen extends StatelessWidget {
                           ApplicationMenuCard(
                             icon: Icons.person_3_outlined,
                             title: "Permintaan saksi",
-                            subtitle: "Lihat teman yang mengajukan permintaan saksi.",
+                            subtitle:
+                                "Lihat teman yang mengajukan permintaan saksi.",
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => const WitnessDemand()));
-                            }
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const WitnessDemand(),
+                                ),
+                              );
+                            },
                           ),
                           const SizedBox(height: 20),
                           const Divider(height: 1),
@@ -234,10 +295,16 @@ class DashboardScreen extends StatelessWidget {
                           ApplicationMenuCard(
                             icon: Icons.align_vertical_bottom_sharp,
                             title: "Progress",
-                            subtitle: "Lihat kemajuan kompetensi dan pencapain belajarmu.",
+                            subtitle:
+                                "Lihat kemajuan kompetensi dan pencapain belajarmu.",
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProgressScreen()));
-                            }
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const ProgressScreen(),
+                                ),
+                              );
+                            },
                           ),
                           const SizedBox(height: 20),
                           const Divider(height: 1),
@@ -245,20 +312,24 @@ class DashboardScreen extends StatelessWidget {
                           ApplicationMenuCard(
                             icon: Icons.warning_amber_outlined,
                             title: "Catatan Sikap",
-                            subtitle: "Lihat catatan sikap dan perilaku dari guru.",
+                            subtitle:
+                                "Lihat catatan sikap dan perilaku dari guru.",
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => const AtitudeRecord()));
-                            }
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const AtitudeRecord(),
+                                ),
+                              );
+                            },
                           ),
                         ],
                       ),
                     ),
                     const SizedBox(height: 35),
-        
+
                     // STATISTIK KOMPETENSI
-                    SectionTitle(
-                      sectionTitle: "STATISTIK KOMPETENSI",
-                    ),
+                    SectionTitle(sectionTitle: "STATISTIK KOMPETENSI"),
                     const SizedBox(height: 15),
                     CompetencyStatisticCard(
                       title: "Materi Diselesaikan",
@@ -296,14 +367,15 @@ class DashboardScreen extends StatelessWidget {
                       icon: Icons.refresh_outlined,
                     ),
                     const SizedBox(height: 35),
-        
+
                     // PROGRESS AKADEMIK
-                    SectionTitle(
-                      sectionTitle: "PROGRESS AKADEMIK",
-                    ),
+                    SectionTitle(sectionTitle: "PROGRESS AKADEMIK"),
                     const SizedBox(height: 15),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 25,
+                        vertical: 20,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         border: Border.all(color: Colors.grey[300]!),
@@ -312,7 +384,7 @@ class DashboardScreen extends StatelessWidget {
                             color: Colors.grey.withOpacity(0.2),
                             spreadRadius: 2,
                             blurRadius: 5,
-                            offset: const Offset(0, 2), 
+                            offset: const Offset(0, 2),
                           ),
                         ],
                       ),
@@ -343,12 +415,12 @@ class DashboardScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
               const SizedBox(height: 30),
-              Footer()
+              Footer(),
             ],
           ),
         ),
