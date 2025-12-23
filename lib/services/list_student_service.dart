@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:jurnalku_app/models/student_model.dart';
 
 class ListStudentService {
-  static const String baseUrl = 'http://15.15.5.86:8000/api';
+  static const String baseUrl = 'http://localhost:8000/api';
 
   static Future<List<StudentModel>> fetchStudents() async {
     final response = await http.get(

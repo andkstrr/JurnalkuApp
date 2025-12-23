@@ -131,7 +131,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Menampilkan 1 - 3 dari 538 siswa",
+                      "Menampilkan 1 - 2 dari 538 siswa",
                       style: GoogleFonts.inter(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
@@ -146,15 +146,32 @@ class _ExploreScreenState extends State<ExploreScreen> {
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
-                          return const Skeletonizer(
+                          return Skeletonizer(
                             enabled: true,
-                            child: StudentProfileCard(
-                              name: "Nama",
-                              nis: 0,
-                              rombel: "Rombel",
-                              rayon: "Rayon",
-                              countOfPortfolio: 0,
-                              countOfCertificate: 0,
+                            child: ListView.separated(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount:
+                                  3, // Tampilkan 3 kartu skeleton sebagai placeholder
+                              separatorBuilder: (context, index) =>
+                                  const SizedBox(height: 25),
+                              itemBuilder: (context, index) {
+                                return StudentProfileCard(
+                                  // Pastikan StudentModel memiliki data dummy atau constructor kosong yang valid
+                                  student: StudentModel(
+                                    id: 0,
+                                    user: 0,
+                                    name: "Nama Lengkap Siswa",
+                                    nis: 12345678,
+                                    rombel: 0,
+                                    rayon: 0,
+                                    jurusan: 0,
+                                    photo: 0,
+                                    createdAt: DateTime.now(),
+                                    updatedAt: DateTime.now()
+                                  ),
+                                );
+                              },
                             ),
                           );
                         } else if (snapshot.hasError) {
@@ -174,18 +191,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
                               itemCount: students.length,
-                              separatorBuilder: (context, index) => const SizedBox(height: 25),
+                              separatorBuilder: (context, index) =>
+                                  const SizedBox(height: 25),
                               itemBuilder: (context, index) {
                                 final student = students[index];
-                                return StudentProfileCard(
-                                  name: student.name,
-                                  nis: student.nis,
-                                  rombel: "${student.rombel}",
-                                  rayon: "${student.rayon}",
-                                  countOfPortfolio: 0,
-                                  countOfCertificate: 0,
-                                );
-                              }
+                                return StudentProfileCard(student: student);
+                              },
                             ),
                           ],
                         );

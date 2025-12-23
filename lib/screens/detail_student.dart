@@ -60,7 +60,7 @@ class DetailStudentScreen extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 50,
                               backgroundImage: NetworkImage(
-                                "https://avatars.githubusercontent.com/u/147963834?v=4",
+                                "${student.photo}",
                               ),
                             ),
                           ),
@@ -110,7 +110,7 @@ class DetailStudentScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Andika Attala Rizqya Satrio Zahira",
+                            student.name,
                             style: GoogleFonts.inter(
                               fontSize: 27,
                               fontWeight: FontWeight.w700,
@@ -118,7 +118,7 @@ class DetailStudentScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 10),
                           Text(
-                            "12309526 | PPLG XII-5 | Cic 8",
+                            "${student.nis} | ${student.rombel} | ${student.rayon}",
                             style: GoogleFonts.inter(
                               fontSize: 17,
                               fontWeight: FontWeight.w500,
