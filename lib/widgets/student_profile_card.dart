@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jurnalku_app/screens/detail_student.dart';
-import 'package:jurnalku_app/screens/profile.dart';
 import 'package:jurnalku_app/models/student_model.dart';
 
 class StudentProfileCard extends StatelessWidget {
@@ -51,7 +50,7 @@ class StudentProfileCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            "${student.nis} | ${student.rombel} | ${student.rayon} ",
+            "${student.nis} | PPLG ${student.rombel.tingkatan} | ${student.rayon.name} ",
             style: GoogleFonts.inter(
               fontSize: 13,
               fontWeight: FontWeight.w500,

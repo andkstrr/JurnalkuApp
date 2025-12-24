@@ -118,7 +118,7 @@ class DetailStudentScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 10),
                           Text(
-                            "${student.nis} | ${student.rombel} | ${student.rayon}",
+                            "${student.nis} | PPLG ${student.rombel.tingkatan} | ${student.rayon.name}",
                             style: GoogleFonts.inter(
                               fontSize: 17,
                               fontWeight: FontWeight.w500,

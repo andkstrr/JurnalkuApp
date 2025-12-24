@@ -144,6 +144,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     FutureBuilder(
                       future: futureStudents,
                       builder: (context, snapshot) {
+                        // loading
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
                           return Skeletonizer(
@@ -151,31 +152,20 @@ class _ExploreScreenState extends State<ExploreScreen> {
                             child: ListView.separated(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
-                              itemCount:
-                                  3, // Tampilkan 3 kartu skeleton sebagai placeholder
+                              itemCount: 3,
                               separatorBuilder: (context, index) =>
                                   const SizedBox(height: 25),
                               itemBuilder: (context, index) {
                                 return StudentProfileCard(
-                                  // Pastikan StudentModel memiliki data dummy atau constructor kosong yang valid
-                                  student: StudentModel(
-                                    id: 0,
-                                    user: 0,
-                                    name: "Nama Lengkap Siswa",
-                                    nis: 12345678,
-                                    rombel: 0,
-                                    rayon: 0,
-                                    jurusan: 0,
-                                    photo: 0,
-                                    createdAt: DateTime.now(),
-                                    updatedAt: DateTime.now()
-                                  ),
+                                  student: StudentModel.placeholder(),
                                 );
                               },
                             ),
                           );
+                          // error
                         } else if (snapshot.hasError) {
                           return Text('Error: ${snapshot.error}');
+                          // empty
                         } else if (!snapshot.hasData ||
                             snapshot.data!.isEmpty) {
                           return Text('TIdak ada data');
